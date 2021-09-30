@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Login from "./components/Login";
 
 function App() {
-  //const [user,setUser] = useState(null)
+  const [user,setUser] = useState(null)
   // const newUserData = {
   //   "username": "icet",
   //   "email" : "ice@gmail.com",
@@ -27,7 +28,7 @@ function App() {
   // },[])
   return (
     <div>
-      
+      <Login setUser={setUser}/>
     </div>
   );
 }

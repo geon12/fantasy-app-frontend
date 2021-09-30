@@ -1,4 +1,6 @@
-function LoginForm() {
+import { useState } from "react"
+
+function LoginForm({setUser}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -9,14 +11,20 @@ function LoginForm() {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify(
+                { "user" :{ 
+                "username": username, 
+                "password": password 
+                }
+            })
         }
         fetch(`${process.env.REACT_APP_API_URL}/login`,configObj)
             .then((resp) => {
                 if (resp.ok) {
                     resp.json().then(resp => {
+                        localStorage.setItem("jwt", resp.jwt)
+                        setUser(resp)
                         console.log(resp)
-                        
                     })
                 }
                 else {
