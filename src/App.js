@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import Login from "./components/Login";
+import Profile from "./components/Profile"
 
 function App() {
   const [user,setUser] = useState(null)
@@ -51,6 +52,7 @@ function App() {
   return (
     <div>
       <Login setUser={setUser}/>
+      <Profile user={user}/>
     </div>
   );
 }
