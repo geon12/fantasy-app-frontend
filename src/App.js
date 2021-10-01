@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import Login from "./components/Login";
 import Profile from "./components/Profile"
+import Logout from "./components/Logout";
 
 function App() {
   const [user,setUser] = useState(null)
@@ -51,8 +52,9 @@ function App() {
   },[])
   return (
     <div>
+      <Logout setUser={setUser}/>
       <Login setUser={setUser}/>
-      <Profile user={user}/>
+      {user ? <Profile user={user}/> : <div>Page is Loading</div>}
     </div>
   );
 }

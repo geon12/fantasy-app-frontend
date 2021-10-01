@@ -23,8 +23,8 @@ function LoginForm({setUser}) {
                 if (resp.ok) {
                     resp.json().then(resp => {
                         localStorage.setItem("jwt", resp.jwt)
-                        setUser(resp)
-                        console.log(resp)
+                        setUser(resp.user)
+                        
                     })
                 }
                 else {
