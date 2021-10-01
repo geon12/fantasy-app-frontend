@@ -34,11 +34,11 @@ function LoginForm({setUser}) {
             
     }
 
-    function handleUsernameChange(e) {
-        setUsername(e.target.value)
+    function handleUsernameChange(event) {
+        setUsername(event.target.value)
     }
-    function handlePasswordChange(e) {
-        setPassword(e.target.value)
+    function handlePasswordChange(event) {
+        setPassword(event.target.value)
     }
 
     return (
