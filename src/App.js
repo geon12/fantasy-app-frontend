@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Login from "./components/Login";
 
 function App() {
@@ -26,6 +26,28 @@ function App() {
   //       console.log(data)
   //     });
   // },[])
+
+  useEffect(()=> {
+    const token = localStorage.getItem("jwt")
+    if (token) {
+     
+      fetch("http://localhost:3000/profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          // save the token to localStorage for future access
+          
+          // save the user somewhere (in state!) to log the user in
+          //setUser(data.user);
+          setUser(data)
+        });
+       
+    }
+  },[])
   return (
     <div>
       <Login setUser={setUser}/>
