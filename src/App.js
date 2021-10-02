@@ -11,6 +11,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [user,setUser] = useState(null)
@@ -63,7 +64,7 @@ function App() {
   
   return (
     <Router>
-      <Logout setUser={setUser}/>
+      <NavBar user={user} setUser={setUser} />
       <Switch>
         <Route exact path="/">
           {user ? <Redirect to="/profile" /> : <Home />}
