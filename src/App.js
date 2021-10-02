@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile"
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
+import Roster from "./components/Roster"
 
 import {
   BrowserRouter as Router,
@@ -42,7 +43,7 @@ function App() {
     const token = localStorage.getItem("jwt")
     if (token) {
      
-      fetch("http://localhost:3000/profile", {
+      fetch(`${process.env.REACT_APP_API_URL}/profile`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -50,10 +51,6 @@ function App() {
       })
         .then((resp) => resp.json())
         .then((data) => {
-          // save the token to localStorage for future access
-          
-          // save the user somewhere (in state!) to log the user in
-          //setUser(data.user);
           setUser(data)
         }).catch(console.log)
        
@@ -76,6 +73,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           {user ? <Redirect to="/profile" /> : <SignUp setUser={setUser}/>}
+        </Route>
+        <Route exact path="/fantasy_teams/:teamId">
+            {user ? <Roster /> : null}
         </Route>
         <Route path="*">
               <div>404 Page Not Found</div>
