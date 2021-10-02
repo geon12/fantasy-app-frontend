@@ -3,6 +3,14 @@ import Login from "./components/Login";
 import Profile from "./components/Profile"
 import Logout from "./components/Logout";
 import SignUp from "./components/Signup";
+import Home from "./components/Home";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 function App() {
   const [user,setUser] = useState(null)
@@ -51,13 +59,29 @@ function App() {
        
     }
   },[])
+
+  
   return (
-    <div>
+    <Router>
       <Logout setUser={setUser}/>
-      <SignUp setUser={setUser}/>
-      <Login setUser={setUser}/>
-      {user ? <Profile user={user}/> : <div>Page is Loading</div>}
-    </div>
+      <Switch>
+        <Route exact path="/">
+          {user ? <Redirect to="/profile" /> : <Home />}
+        </Route>
+        <Route exact path="/profile">
+            {user ? <Profile user={user} setUser={setUser}/> : <div>Profile is Loading</div>}
+        </Route>
+        <Route exact path="/login">
+            {user ? <Redirect to="/profile" /> : <Login setUser={setUser}/>}
+        </Route>
+        <Route exact path="/signup">
+          {user ? <Redirect to="/profile" /> : <SignUp setUser={setUser}/>}
+        </Route>
+        <Route path="*">
+              <div>404 Page Not Found</div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
