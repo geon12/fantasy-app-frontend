@@ -47,7 +47,7 @@ function App() {
           // save the user somewhere (in state!) to log the user in
           //setUser(data.user);
           setUser(data)
-        });
+        }).catch(console.log)
        
     }
   },[])
