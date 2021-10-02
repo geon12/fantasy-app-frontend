@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
 import Login from "./components/Login";
 import Profile from "./components/Profile"
-import Logout from "./components/Logout";
 import SignUp from "./components/Signup";
 import Home from "./components/Home";
 
