@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import RosterCardContainer from "./RosterCardContainer";
 
 function Roster() {
 
@@ -88,6 +89,7 @@ function Roster() {
             <div>
                 <h1>{team.team_name}</h1>
                 <h2>league: {team.league.name}</h2>
+                <RosterCardContainer players={team.team_players} league={team.league}/>
             </div> :
             <div>Page is Loading</div>
             }

@@ -30,7 +30,7 @@ function LoginForm({setUser}) {
                 else {
                     resp.json().then((resp) => resp.errors)
                 }
-            })
+            }).catch(console.log)
             
     }
 
