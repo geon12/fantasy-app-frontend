@@ -89,7 +89,7 @@ function Roster() {
             <div>
                 <h1>{team.team_name}</h1>
                 <h2>league: {team.league.name}</h2>
-                <RosterCardContainer players={team.team_players} league={team.league}/>
+                <RosterCardContainer team={team} setTeam={setTeam}/>
             </div> :
             <div>Page is Loading</div>
             }
