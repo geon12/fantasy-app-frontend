@@ -1,4 +1,8 @@
+import AddPlayer from "./AddPlayer"
+import {useState} from "react"
+
 function RosterCard({teamPlayer,position,team,setTeam}) {
+    const [showAdd,setShowAdd] = useState(false)
     
     function filterPlayers() {
         const team_players = team.team_players.filter((team_player) => team_player.id !== teamPlayer.id)
@@ -23,6 +27,11 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
             
         }
     }
+
+    function handleClick() {
+        setShowAdd(true)
+    }
+
     return (
         <div>
             {
@@ -35,7 +44,14 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
                     <button onClick={dropPlayer}>Drop Player</button>
                 </div>
                 :
-                <div>{`Add a ${position} player to your roster`}</div>
+                <>
+                    {
+                    showAdd ? 
+                    <AddPlayer team={team} setTeam={setTeam} showAdd={showAdd} setShowAdd={setShowAdd} position={position}/>:
+                    <div onClick={handleClick}>{`Add a ${position} player to your roster`}</div>
+                    
+                    }
+                </>
             }
         </div>
     )
