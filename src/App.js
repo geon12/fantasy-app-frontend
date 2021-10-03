@@ -12,6 +12,7 @@ import {
   Redirect
 } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Leagues from "./components/Leagues";
 
 function App() {
   const [user,setUser] = useState(null)
@@ -73,6 +74,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           {user ? <Redirect to="/profile" /> : <SignUp setUser={setUser}/>}
+        </Route>
+        <Route exact path="/leagues">
+          {user ? <Leagues user={user}/> : <div>Loading</div>}
         </Route>
         <Route exact path="/fantasy_teams/:teamId">
             {user ? <Roster /> : null}
