@@ -39,8 +39,7 @@ function App() {
   //       console.log(data)
   //     });
   // },[])
-
-  useEffect(()=> {
+  function getUserData() {
     const token = localStorage.getItem("jwt")
     if (token) {
      
@@ -56,6 +55,9 @@ function App() {
         }).catch(console.log)
        
     }
+  }
+  useEffect(()=> {
+    getUserData()
   },[])
 
   
@@ -76,7 +78,7 @@ function App() {
           {user ? <Redirect to="/profile" /> : <SignUp setUser={setUser}/>}
         </Route>
         <Route exact path="/leagues">
-          {user ? <Leagues user={user}/> : <div>Loading</div>}
+          {user ? <Leagues user={user} setUser={setUser} getUserData={getUserData}/> : <div>Loading</div>}
         </Route>
         <Route exact path="/fantasy_teams/:teamId">
             {user ? <Roster /> : null}
