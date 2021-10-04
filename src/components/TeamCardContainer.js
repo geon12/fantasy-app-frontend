@@ -1,6 +1,6 @@
 import TeamCard from "./TeamCard"
 
-function TeamCardContainer({user}) {
+function TeamCardContainer({user,setUser}) {
 
     function findleague(team) {
         return user.leagues.find((league) => league.id === team.league_id)
@@ -8,7 +8,7 @@ function TeamCardContainer({user}) {
 
     function populateTeamCards() {
         return user.fantasy_teams.map((team) => {
-            return <TeamCard team={team} league={findleague(team)} key={team.id}/>
+            return <TeamCard team={team} league={findleague(team)} user={user} setUser={setUser} key={team.id}/>
         })
     }
     return (
