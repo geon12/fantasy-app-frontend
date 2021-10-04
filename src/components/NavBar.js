@@ -13,6 +13,7 @@ function NavBar({user, setUser}) {
                         
                         <Link to="/profile">Profile</Link>
                         <Link to="/leagues">Leagues</Link>
+                        <Link to="/join_league">Join a League</Link>
                         <Logout setUser={setUser}/>
     
                     </> :

@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Leagues from "./components/Leagues";
+import JoinLeague from "./components/JoinLeague";
 
 function App() {
   const [user,setUser] = useState(null)
@@ -79,6 +80,9 @@ function App() {
         </Route>
         <Route exact path="/leagues">
           {user ? <Leagues user={user} setUser={setUser} getUserData={getUserData}/> : <div>Loading</div>}
+        </Route>
+        <Route exact path="/join_league">
+          {user ? <JoinLeague user={user} setUser={setUser} getUserData={getUserData}/> : <div>Loading</div>}
         </Route>
         <Route exact path="/fantasy_teams/:teamId">
             {user ? <Roster /> : null}
