@@ -43,9 +43,15 @@ function LoginForm({setUser}) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="username" value={username} placeholder="Username" onChange={handleUsernameChange}/>
-            <input type="password" name="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
-            <button type="submit">Login</button>
+            <div>
+                <input type="text" name="username" className="form-control-lg my-2" value={username} placeholder="Username" onChange={handleUsernameChange}/>
+            </div>
+            <div>
+                <input type="password" name="password" className="form-control-lg my-2" value={password} placeholder="Password" onChange={handlePasswordChange}/>
+            </div>
+            <div>
+                <button type="submit" className="btn btn-success mx-2">Login</button>
+            </div>
         </form>
     )
 }
