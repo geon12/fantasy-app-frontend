@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import JoinLeagueCard from "./JoinLeagueCard"
 
-function JoinLeague() {
+function JoinLeague({user,setUser}) {
     const [leagues,setLeagues] = useState(null)
     useEffect(()=>{
         const token = localStorage.getItem("jwt")
@@ -23,7 +23,7 @@ function JoinLeague() {
     },[])
 
     function populateLeagues() {
-        return leagues.map((league) =><JoinLeagueCard  league={league} key={league.id}/>)
+        return leagues.map((league) =><JoinLeagueCard user={user} setUser={setUser} league={league} key={league.id}/>)
     }
 
     
