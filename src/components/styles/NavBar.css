@@ -1,0 +1,33 @@
+.navbar {
+    background-color: darkgreen;
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+.navbar a {
+
+
+    color: white;
+    text-decoration: none;
+    margin-left:2%;
+    margin-right:5%;
+
+}
+
+
+
+.icon {
+    background-color: lightgreen;
+    font-size: 2em;
+    
+}
+
+.log {
+    margin-right: 5%
+}
+
+.log-button {
+    background-color: black;
+    color: white;
+}
