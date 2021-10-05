@@ -46,39 +46,51 @@ function SignupForm({setUser}) {
     
     }
     return (
+        <div className="text-center">
         <form onSubmit={handleSubmit}>
-             
-            <input
-                type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                placeholder="username"
-            />
-            <input
-                type="text"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="email"
-            />
-            <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="password"
-            />
-
-            <input
-                type="password"
-                value={passwordConfirmation}
-                onChange={handleConfirmationChange}
-                placeholder="confirm password"
-            />
-            
+            <div> 
+                <input
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder="username"
+                    className="form-control-lg my-2"
+                />
+            </div>
+            <div>
+                <input
+                    type="text"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="email"
+                    className="form-control-lg my-2"
+                />
+                
+            </div>
+            <div>
+                <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="password"
+                    className="form-control-lg my-2"
+                />
+            </div>
+            <div>
+                <input
+                    type="password"
+                    value={passwordConfirmation}
+                    onChange={handleConfirmationChange}
+                    placeholder="confirm password"
+                    className="form-control-lg my-2"
+                />
+            </div>
             <button type="submit" disabled={formData.password !==  passwordConfirmation}>Submit</button>
         </form>
+        </div>
     )
 }
 
