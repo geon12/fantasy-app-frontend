@@ -4,18 +4,21 @@ function SearchBar({handleSearch, resource}) {
     const [search,setSearch] = useState("")
 
     function handleChange(event) {
+       
         setSearch(event.target.value)
-        
+        handleSearch(event.target.value)
     }
-    function handleSubmit(event) {
-        event.preventDefault()
-        handleSearch(search)
-        setSearch("")
-    }
+    // function handleSubmit(event) {
+    //     event.preventDefault()
+    //     handleSearch(search)
+    //     setSearch("")
+    // }
+
+    
     const placeholder = `Search`
     const id = `search`
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             <label htmlFor={id}>
                 <span>Search for {resource}</span>
             </label>
@@ -27,7 +30,7 @@ function SearchBar({handleSearch, resource}) {
                 value={search}
                 onChange={handleChange}
             />
-            <button type="submit">Search</button>
+            
         </form>
     )
 }

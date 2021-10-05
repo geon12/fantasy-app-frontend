@@ -5,21 +5,23 @@ import "./styles/AddPlayer.css"
 
 function AddPlayer({team,setTeam,setShowAdd,position}) {
     const [freeAgents,setFreeAgents] = useState(null)
-    const [filteredAgents,setFilteredAgents] = useState(null)
+    const [filteredAgents,setFilteredAgents] = useState([])
     
-    function filterPlayers() {
+    function filterPlayers(agents) {
         if (position === "Bench" || position === "Utility") {
-            return freeAgents.map((freeAgent) => freeAgent.player)
+            return agents.map((freeAgent) => freeAgent.player)
         }
         
-        const filteredAgents = freeAgents.map((freeAgent) => freeAgent.player)
+        const filteredAgents = agents.map((freeAgent) => freeAgent.player)
         return filteredAgents.filter((freeAgent) => freeAgent.position === position)
     }
 
 
     function handleSearch(searchTerm) {
         searchTerm = searchTerm.toLowerCase()
-        if (searchTerm) setFilteredAgents(filterPlayers().filter(player => player.name.toLowerCase().includes(searchTerm)))
+        
+        if (searchTerm) setFilteredAgents(filterPlayers(freeAgents).filter(player => player.name.toLowerCase().includes(searchTerm)))
+            
     }
 
     function handleCloseClick() {
@@ -39,7 +41,7 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
             .then((resp) => resp.json())
             .then((data) => {
                 setFreeAgents(data)
-                
+                setFilteredAgents(data.map((freeAgent) => freeAgent.player))
             }).catch(console.log)
         
     }
@@ -57,7 +59,7 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
                 <> 
                 <button onClick={handleCloseClick}>Close</button>
                 <SearchBar handleSearch={handleSearch} resource={"Free Agents"}/>
-                {filteredAgents ? filteredAgents.map((agent) => 
+                {filteredAgents.map((agent) => 
                     <PlayerCard 
                         player={agent} 
                         key={agent.id} 
@@ -66,7 +68,7 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
                         updateRoster={updateRoster}
                         position={position}
                     />) 
-                    : null}
+                }
                 </> 
                 : 
                 <div>Loading</div>}
