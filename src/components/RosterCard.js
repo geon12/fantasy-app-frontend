@@ -33,7 +33,7 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
     }
 
     return (
-        <div>
+        <div className="card border-dark text-center p-2 m-2">
             {
                 teamPlayer ?
                 <div>
@@ -48,7 +48,7 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
                     {
                     showAdd ? 
                     <AddPlayer team={team} setTeam={setTeam} showAdd={showAdd} setShowAdd={setShowAdd} position={position}/>:
-                    <div onClick={handleClick}>{`Add a ${position} player to your roster`}</div>
+                    <div className="display-5 p-5 hover-shadow" onClick={handleClick}>{`Add a ${position} player to your roster`}</div>
                     
                     }
                 </>

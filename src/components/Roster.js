@@ -84,7 +84,7 @@ function Roster() {
         }
     },[teamId])
     return (
-        <div>
+        <div className="text-center">
             {team && team.league ? 
             <div>
                 <h1>{team.team_name}</h1>

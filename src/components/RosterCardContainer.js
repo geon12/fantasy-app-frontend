@@ -28,25 +28,39 @@ function RosterCardContainer({team,setTeam}) {
 
             <h3>Point Guards</h3>
             <h5>max:{league.pg_num}</h5>
-            {populateRosterCards(filterPlayers('PG'),'PG',league.pg_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterPlayers('PG'),'PG',league.pg_num)}
+            </div>
             <h3>Power Forwards</h3>
             <h5>max:{league.pf_num}</h5>
-            {populateRosterCards(filterPlayers('PF'),'PF',league.pf_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterPlayers('PF'),'PF',league.pf_num)}
+            </div>
             <h3>Small Forwards</h3>
             <h5>max:{league.sf_num}</h5>
-            {populateRosterCards(filterPlayers('SF'),'SF',league.sf_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterPlayers('SF'),'SF',league.sf_num)}
+            </div>
             <h3>Shooting Guards</h3>
             <h5>max:{league.sg_num}</h5>
-            {populateRosterCards(filterPlayers('SG'),'SG',league.sg_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterPlayers('SG'),'SG',league.sg_num)}
+            </div>
             <h3>Centers</h3>
             <h5>max:{league.c_num}</h5>
-            {populateRosterCards(filterPlayers('C'),'C',league.c_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterPlayers('C'),'C',league.c_num)}
+            </div>
             <h3>Utility Players</h3>
             <h5>max:{league.util_num}</h5>
-            {populateRosterCards(filterBenchAndUtility(false),'Utility',league.util_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterBenchAndUtility(false),'Utility',league.util_num)}
+            </div>
             <h2>Bench Players</h2>
             <h5>max:{league.be_num}</h5>
-            {populateRosterCards(filterBenchAndUtility(true),'Bench',league.be_num)}
+            <div className="d-flex justify-content-center">
+                {populateRosterCards(filterBenchAndUtility(true),'Bench',league.be_num)}
+            </div>
         </div>
     )
 }

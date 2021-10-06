@@ -14,7 +14,9 @@ function TeamCardContainer({user,setUser}) {
     return (
         <div>
             <h1>Your Teams</h1>
-            {populateTeamCards()}
+            <div className="d-flex justify-content-center">
+                {populateTeamCards()}
+            </div>
         </div>
     )
 }
