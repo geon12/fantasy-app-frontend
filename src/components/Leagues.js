@@ -72,7 +72,7 @@ function Leagues({user,setUser,getUserData}) {
 
     
     return (
-        <div>
+        <div className="text-center">
             <h1>Manage your Leagues</h1>
             {showCreate ? <LeagueEditForm handleSubmit={handleSubmit}/> : null}
             <button onClick={handleCreate}>{showCreate ? "Close" : "Create a League!"}</button>

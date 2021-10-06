@@ -29,24 +29,44 @@ function LeagueEditForm({league,handleSubmit}) {
     }
     return (
         <form onSubmit={onSubmit}>
-            <input type="text" name="name" value={formData.name} placeholder="Name" onChange={handleChange}/>
-            <label htmlFor="team_num">Number of Teams: </label>
-            <input type="number" id="team_num" min="1" max="12" name="team_num" value={formData.team_num} onChange={handleChange}/>
-            <label htmlFor="pg_num">Number of Point Guards: </label>
-            <input type="number" id="pg_num" min="1" max="3" name="pg_num" value={formData.pg_num} onChange={handleChange}/>
-            <label htmlFor="pf_num">Number of Power Forwards: </label>
-            <input type="number" id="pf_num" min="1" max="3" name="pf_num" value={formData.pf_num} onChange={handleChange}/>
-            <label htmlFor="sg_num">Number of Shooting Guards: </label>
-            <input type="number" id="sg_num" min="1" max="3" name="sg_num" value={formData.sg_num} onChange={handleChange}/>
-            <label htmlFor="sf_num">Number of Small Forwards: </label>
-            <input type="number" id="sf_num" min="1" max="3" name="sf_num" value={formData.sf_num} onChange={handleChange}/>
-            <label htmlFor="c_num">Number of Centers: </label>
-            <input type="number" id="c_num" min="1" max="3" name="c_num" value={formData.c_num} onChange={handleChange}/>
-            <label htmlFor="be_num">Number of Bench Players: </label>
-            <input type="number" id="be_num" min="1" max="5" name="be_num" value={formData.be_num} onChange={handleChange}/>
-            <label htmlFor="pg_num">Number of Utility Players: </label>
-            <input type="number" id="util_num" min="1" max="4" name="util_num" value={formData.util_num} onChange={handleChange}/>
-            <button>Save</button>
+            <div>
+                <input type="text" name="name" value={formData.name} placeholder="Name" onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="team_num">Number of Teams: </label>
+                <input type="number" id="team_num" min="1" max="12" name="team_num" value={formData.team_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="pg_num">Number of Point Guards: </label>
+                <input type="number" id="pg_num" min="1" max="3" name="pg_num" value={formData.pg_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="pf_num">Number of Power Forwards: </label>
+                <input type="number" id="pf_num" min="1" max="3" name="pf_num" value={formData.pf_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="sg_num">Number of Shooting Guards: </label>
+                <input type="number" id="sg_num" min="1" max="3" name="sg_num" value={formData.sg_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="sf_num">Number of Small Forwards: </label>
+                <input type="number" id="sf_num" min="1" max="3" name="sf_num" value={formData.sf_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="c_num">Number of Centers: </label>
+                <input type="number" id="c_num" min="1" max="3" name="c_num" value={formData.c_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="be_num">Number of Bench Players: </label>
+                <input type="number" id="be_num" min="1" max="5" name="be_num" value={formData.be_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="pg_num">Number of Utility Players:     </label>
+                <input type="number" id="util_num" min="1" max="4" name="util_num" value={formData.util_num} onChange={handleChange}/>
+            </div>
+            <div>
+                <button>Save</button>
+            </div>
         </form>
     )
 }
