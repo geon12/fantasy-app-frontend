@@ -61,7 +61,7 @@ function LeagueEditForm({league,handleSubmit}) {
                 <input type="number" id="be_num" min="1" max="5" name="be_num" value={formData.be_num} onChange={handleChange}/>
             </div>
             <div>
-                <label htmlFor="pg_num">Number of Utility Players:     </label>
+                <label htmlFor="pg_num">Number of Utility Players: </label>
                 <input type="number" id="util_num" min="1" max="4" name="util_num" value={formData.util_num} onChange={handleChange}/>
             </div>
             <div>

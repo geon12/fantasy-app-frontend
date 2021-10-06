@@ -51,7 +51,7 @@ function CreateTeam({user,setUser,league,handleClick}) {
         }
     }
     return (
-        <div className="modal">
+        <div className="modal text-center">
             <button onClick={handleClick}>Close</button>
             <h1>Team Name</h1>
             <form onSubmit={handleSubmit}>

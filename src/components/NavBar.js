@@ -15,7 +15,7 @@ function NavBar({user, setUser}) {
                         <Link className="nav-item" to="/profile">Profile</Link>
                         <Link className="nav-item" to="/leagues">Leagues</Link>
                         <Link className="nav-item" to="/join_league">Join a League</Link>
-                        <Logout className="nav-item" className="log"setUser={setUser}/>
+                        <Logout className="nav-item" setUser={setUser}/>
     
                     </> :
                         <Link className="nav-item" to="/login"> 
