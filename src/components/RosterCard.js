@@ -3,6 +3,7 @@ import {useState} from "react"
 
 function RosterCard({teamPlayer,position,team,setTeam}) {
     const [showAdd,setShowAdd] = useState(false)
+    const [cancel,setCancel] = useState(false)
     
     function filterPlayers() {
         const team_players = team.team_players.filter((team_player) => team_player.id !== teamPlayer.id)
@@ -32,6 +33,14 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
         setShowAdd(true)
     }
 
+    function handleBenchClick() {
+        setCancel(true)
+    }
+
+    function handleCancel() {
+        setCancel(false)
+    }
+
     return (
         <div className="card border-dark text-center p-2 m-2">
             {
@@ -42,6 +51,7 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
                     <h4>{teamPlayer.player.position}</h4>
                     <h4>fppg: {teamPlayer.player.fppg}</h4>
                     <button onClick={dropPlayer}>Drop Player</button>
+                    { cancel ? <button onClick={handleCancel}>Cancel</button> : teamPlayer.bench ? null : <button onClick={handleBenchClick}>Bench</button> }
                 </div>
                 :
                 <>
