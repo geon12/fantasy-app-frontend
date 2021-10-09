@@ -1,7 +1,7 @@
 import AddPlayer from "./AddPlayer"
 import {useState} from "react"
 
-function RosterCard({teamPlayer,position,team,setTeam}) {
+function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
     const [showAdd,setShowAdd] = useState(false)
     const [cancel,setCancel] = useState(false)
     
@@ -32,9 +32,35 @@ function RosterCard({teamPlayer,position,team,setTeam}) {
     function handleClick() {
         setShowAdd(true)
     }
+    
+    function updatePlayers(updatedPlayer) {
+        const team_players = team.team_players.map((team_player) => {
+            if (team_player.id === updatedPlayer.id) return updatedPlayer
+            return team_player
+        })
+        const new_team = {...team}
+        new_team.team_players = team_players
+        return new_team
+    }
 
     function handleBenchClick() {
-        setCancel(true)
+        const token = localStorage.getItem("jwt")
+        if (benchable && token) {
+            fetch(`${process.env.REACT_APP_API_URL}/team_players/${teamPlayer.id}`, {
+                method: "PATCH",
+                headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({bench: true}) 
+            }).then (resp => resp.json())
+                .then((resp) => {
+                    //console.log(updatePlayers(resp))
+                    setTeam(updatePlayers(resp))
+                }).catch(console.log)
+
+        }
+        //setCancel(true)
     }
 
     function handleCancel() {

@@ -13,6 +13,7 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
         }
         
         const filteredAgents = agents.map((freeAgent) => freeAgent.player)
+        
         return filteredAgents.filter((freeAgent) => freeAgent.position === position)
     }
 
@@ -41,11 +42,11 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
             .then((resp) => resp.json())
             .then((data) => {
                 setFreeAgents(data)
-                setFilteredAgents(data.map((freeAgent) => freeAgent.player))
+                setFilteredAgents(data.map((freeAgent) => freeAgent.player).filter((freeAgent) => freeAgent.position === position))
             }).catch(console.log)
         
     }
-    },[team.league_id])
+    },[team.league_id,position])
 
     function updateRoster(teamPlayer) {
         const updatedTeamPlayers = [...team.team_players]
