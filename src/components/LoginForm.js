@@ -1,8 +1,10 @@
 import { useState } from "react"
+import Spinner from "./Spinner";
 
 function LoginForm({setUser}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [spinner,setSpinner] = useState(null)
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -31,7 +33,7 @@ function LoginForm({setUser}) {
                     resp.json().then((resp) => resp.errors)
                 }
             }).catch(console.log)
-            
+        setSpinner(true)
     }
 
     function handleUsernameChange(event) {
@@ -42,17 +44,22 @@ function LoginForm({setUser}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <input type="text" name="username" className="form-control-lg my-2" value={username} placeholder="Username" onChange={handleUsernameChange}/>
-            </div>
-            <div>
-                <input type="password" name="password" className="form-control-lg my-2" value={password} placeholder="Password" onChange={handlePasswordChange}/>
-            </div>
-            <div>
-                <button type="submit" className="btn btn-success mx-2">Login</button>
-            </div>
-        </form>
+        <div>
+            {   spinner ?
+                <Spinner /> :
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <input type="text" name="username" className="form-control-lg my-2" value={username} placeholder="Username" onChange={handleUsernameChange}/>
+                    </div>
+                    <div>
+                        <input type="password" name="password" className="form-control-lg my-2" value={password} placeholder="Password" onChange={handlePasswordChange}/>
+                    </div>
+                    <div>
+                        <button type="submit"  className="btn btn-success btn-lg rounded-pill mx-2">Login</button>
+                    </div>
+                </form>
+            }
+        </div>
     )
 }
 

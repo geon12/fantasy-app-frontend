@@ -14,6 +14,7 @@ import {
 import NavBar from "./components/NavBar";
 import Leagues from "./components/Leagues";
 import JoinLeague from "./components/JoinLeague";
+import Spinner from "./components/Spinner";
 
 function App() {
   const [user,setUser] = useState(null)
@@ -70,7 +71,7 @@ function App() {
           {user ? <Redirect to="/profile" /> : <Home />}
         </Route>
         <Route exact path="/profile">
-            {user ? <Profile user={user} setUser={setUser}/> : <div>Profile is Loading</div>}
+            {user ? <Profile user={user} setUser={setUser}/> : <Spinner />}
         </Route>
         <Route exact path="/login">
             {user ? <Redirect to="/profile" /> : <Login setUser={setUser}/>}

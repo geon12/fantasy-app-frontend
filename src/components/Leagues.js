@@ -1,9 +1,11 @@
 import { useState } from "react"
 import LeagueCard from "./LeagueCard"
 import LeagueEditForm from "./LeagueEditForm"
+import Spinner from "./Spinner"
 
 function Leagues({user,setUser,getUserData}) {
     const [showCreate,setShowCreate] = useState(false)
+    const [spinner, setSpinner] = useState(false)
     function handleCreate() {
         setShowCreate(prevState => !prevState)
     }
@@ -51,6 +53,7 @@ function Leagues({user,setUser,getUserData}) {
 
     function handleSubmit(formData) {
         setShowCreate(false)
+        setSpinner(true)
         const token = localStorage.getItem("jwt")
         if (token) {
             const configObj = {
@@ -66,7 +69,7 @@ function Leagues({user,setUser,getUserData}) {
             fetch(`${process.env.REACT_APP_API_URL}/leagues/`, configObj)
                 .then(resp => resp.json())
                 .then( (resp) => {
-                    
+                    setSpinner(false)
                     addToLeagues(resp)
                     getUserData()
                     setShowCreate(false)
@@ -83,6 +86,7 @@ function Leagues({user,setUser,getUserData}) {
             {showCreate ? <LeagueEditForm handleSubmit={handleSubmit}/> : null}
             <button onClick={handleCreate}>{showCreate ? "Close" : "Create a League!"}</button>
             {populateCards()}
+            {spinner ? <Spinner /> : null}
         </div>
     )
 }
