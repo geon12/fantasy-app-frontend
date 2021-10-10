@@ -1,6 +1,7 @@
 import RosterCard from "./RosterCard"
 import { v4 as uuidv4 } from 'uuid';
 
+
 function RosterCardContainer({team,setTeam}) {
     const players = team.team_players
     const league = team.league
@@ -13,7 +14,15 @@ function RosterCardContainer({team,setTeam}) {
     }
     function populateRosterCards(rosterPlayers, position,num) {
         const cards = rosterPlayers ? rosterPlayers.map((player)=>{
-            return <RosterCard teamPlayer={player} position={position} key={uuidv4()} setTeam={setTeam} team={team} benchable={benchable()} canStart={canStart(player.player.position)}/>
+            return <RosterCard 
+                    teamPlayer={player} 
+                    position={position} 
+                    key={uuidv4()} 
+                    setTeam={setTeam} 
+                    team={team} 
+                    benchable={benchable()} 
+                    canStart={canStart(player.player.position)}
+                    />
         }) : []
         while (cards.length < num) {
             cards.push(<RosterCard position={position} key={uuidv4()} setTeam={setTeam} team={team}/>)
@@ -28,7 +37,8 @@ function RosterCardContainer({team,setTeam}) {
     }
 
     function canStart(pos) {
-        return filterPlayers(pos).length < league[`${pos.toLowerCase()}_num`]
+        
+        return [filterPlayers(pos).length < league[`${pos.toLowerCase()}_num`] , filterBenchAndUtility(false).length < league.util_num]
     }
     
     return (

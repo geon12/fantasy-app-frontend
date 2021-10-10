@@ -9,15 +9,21 @@ function Leagues({user,setUser,getUserData}) {
     }
     function populateCards() {
         
-        return user.leagues.map((league) => {
-            
-            const commissioner = user.commissioners.find((com) => com.league_id === league.id)
-            if (commissioner) {
-                return <LeagueCard league={league} commissioner={commissioner} updateLeagues={updateLeagues} getUserData={getUserData} key={league.id}/>
-            }
+        const leagues = []
+        
+        user.leagues.forEach((league) => {
+            if (!leagues.find((lg)=> parseInt(lg.key,10) === league.id)) {
+                const commissioner = user.commissioners.find((com) => com.league_id === league.id)
+                if (commissioner) {
+                    leagues.push(<LeagueCard league={league} commissioner={commissioner} updateLeagues={updateLeagues} getUserData={getUserData} key={league.id}/>)
+                } else {
 
-            return <LeagueCard league={league} updateLeagues={updateLeagues} getUserData={getUserData} key={league.id}/>
+                leagues.push(<LeagueCard league={league} updateLeagues={updateLeagues} getUserData={getUserData} key={league.id}/>)
+                }
+            }
         })
+
+        return leagues
     }
 
     function updateLeagues(editedLeague) {

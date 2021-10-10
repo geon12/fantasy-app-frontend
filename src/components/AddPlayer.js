@@ -42,7 +42,12 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
             .then((resp) => resp.json())
             .then((data) => {
                 setFreeAgents(data)
-                setFilteredAgents(data.map((freeAgent) => freeAgent.player).filter((freeAgent) => freeAgent.position === position))
+                setFilteredAgents(data.map((freeAgent) => freeAgent.player).filter((freeAgent) => {
+                    if (position === 'Bench' || position === 'Utility') {
+                        return true
+                    }
+                    return freeAgent.position === position
+                }))
             }).catch(console.log)
         
     }

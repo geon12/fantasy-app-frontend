@@ -3,7 +3,8 @@ import {useState} from "react"
 
 function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
     const [showAdd,setShowAdd] = useState(false)
-    const [cancel,setCancel] = useState(false)
+
+    const token = localStorage.getItem("jwt")
     
     function filterPlayers() {
         const team_players = team.team_players.filter((team_player) => team_player.id !== teamPlayer.id)
@@ -43,28 +44,38 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
         return new_team
     }
 
-    function handleBenchClick() {
-        const token = localStorage.getItem("jwt")
-        if (benchable && token) {
-            fetch(`${process.env.REACT_APP_API_URL}/team_players/${teamPlayer.id}`, {
-                method: "PATCH",
-                headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify({bench: true}) 
-            }).then (resp => resp.json())
-                .then((resp) => {
-                    //console.log(updatePlayers(resp))
-                    setTeam(updatePlayers(resp))
-                }).catch(console.log)
+    function patchPlayer(data) {
+        fetch(`${process.env.REACT_APP_API_URL}/team_players/${teamPlayer.id}`, {
+            method: "PATCH",
+            headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(data) 
+        }).then (resp => resp.json())
+            .then((resp) => {
+                //console.log(updatePlayers(resp))
+                setTeam(updatePlayers(resp))
+            }).catch(console.log)
 
-        }
-        //setCancel(true)
     }
 
-    function handleCancel() {
-        setCancel(false)
+    function handleBenchClick() {
+        
+        if (benchable && token) {
+            patchPlayer({bench:true, utility:false})
+        }
+        
+    }
+
+
+    function handleStart() {
+        if (canStart[0]) {
+            patchPlayer({bench:false})
+        }
+        else if (canStart[1]) {
+            patchPlayer({bench:false,utility:true})
+        }
     }
 
     return (
@@ -77,7 +88,8 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
                     <h4>{teamPlayer.player.position}</h4>
                     <h4>fppg: {teamPlayer.player.fppg}</h4>
                     <button onClick={dropPlayer}>Drop Player</button>
-                    { cancel ? <button onClick={handleCancel}>Cancel</button> : teamPlayer.bench ? null : <button onClick={handleBenchClick}>Bench</button> }
+                    { teamPlayer.bench || !benchable ? null : <button onClick={handleBenchClick}>Bench</button> }
+                    { ((canStart[0] || canStart[1]) && teamPlayer.bench) ? <button onClick={handleStart}>Start</button> : null}
                 </div>
                 :
                 <>
