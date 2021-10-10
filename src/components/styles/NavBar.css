@@ -1,6 +1,6 @@
 .navbar {
     background-color: darkgreen;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: 'Oswald', sans-serif;
 
 }
@@ -10,9 +10,12 @@
 
     color: white;
     text-decoration: none;
-    margin-left:2%;
-    margin-right:5%;
 
+
+}
+
+.nav-link {
+    color: lightgreen;
 }
 
 
@@ -23,11 +26,11 @@
     
 }
 
-.log {
+/* .log {
     margin-right: 5%
-}
+} */
 
 .log-button {
-    background-color: black;
-    color: white;
+    background-color: white;
+    
 }

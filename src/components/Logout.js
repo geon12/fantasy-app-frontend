@@ -9,7 +9,7 @@ function Logout({setUser}) {
         history.push("/login")
     }
     return (
-        <button className="log log-button" onClick={handleClick}>Logout</button>
+        <button className="btn btn-outline-success log-button rounded-pill" onClick={handleClick}>Log Out</button>
     )
 }
 
