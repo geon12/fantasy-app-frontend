@@ -88,7 +88,7 @@ function SignupForm({setUser}) {
                     className="form-control-lg my-2"
                 />
             </div>
-            <button type="submit" disabled={formData.password !==  passwordConfirmation}>Submit</button>
+            <button className="btn btn-success btn-lg rounded-pill" type="submit" disabled={(formData.password !==  passwordConfirmation) || !formData.password}>Submit</button>
         </form>
         </div>
     )
