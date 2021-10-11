@@ -27,3 +27,12 @@
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	text-decoration: underline;
 }
+
+.complete-center {
+	padding: 150px 0;
+	text-align: center;
+}
+
+.button-left {
+	text-align:left;
+}

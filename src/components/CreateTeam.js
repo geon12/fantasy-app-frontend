@@ -51,13 +51,18 @@ function CreateTeam({user,setUser,league,handleClick}) {
         }
     }
     return (
-        <div className="modal text-center">
-            <button onClick={handleClick}>Close</button>
-            <h1>Team Name</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={name} onChange={handleChange}/>
-                <button>Create</button>
-            </form>
+        <div className="modal">
+            <div className="button-left m-2">
+                <button className="btn btn-xl" onClick={handleClick}>✖</button>
+            </div>
+            <div className="complete-center">
+                <h1 className="display-2">Team Name</h1>
+                <form onSubmit={handleSubmit}>
+                    <input className="form-control-lg m-2" type="text" value={name} onChange={handleChange}/>
+                    <br/>
+                    <button className="btn btn-xl btn-success rounded-pill">Create</button>
+                </form>
+            </div>
         </div>
     )
 }

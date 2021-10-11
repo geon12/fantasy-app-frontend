@@ -29,8 +29,10 @@ function JoinLeague({user,setUser}) {
     
     return (
         <div className="text-center">
-            <h1>Find a League to Join!</h1>
-            {leagues ? populateLeagues(leagues) : null}
+            <h1 className="display-1">Find a League to Join!</h1>
+            <div>
+                {leagues ? populateLeagues(leagues) : null}
+            </div>
         </div>
     )
 }
