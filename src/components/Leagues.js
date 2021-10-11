@@ -2,6 +2,7 @@ import { useState } from "react"
 import LeagueCard from "./LeagueCard"
 import LeagueEditForm from "./LeagueEditForm"
 import Spinner from "./Spinner"
+import "./styles/League.css"
 
 function Leagues({user,setUser,getUserData}) {
     const [showCreate,setShowCreate] = useState(false)
@@ -81,11 +82,13 @@ function Leagues({user,setUser,getUserData}) {
 
     
     return (
-        <div className="text-center">
-            <h1>Manage your Leagues</h1>
+        <div className="text-center grad-back">
+            <h1 className="display-2 display-font team-card">Manage your Leagues</h1>
             {showCreate ? <LeagueEditForm handleSubmit={handleSubmit}/> : null}
-            <button onClick={handleCreate}>{showCreate ? "Close" : "Create a League!"}</button>
-            {populateCards()}
+            <button className="btn btn-lg btn-success rounded-pill" onClick={handleCreate}>{showCreate ? "Close" : "Create a League!"}</button>
+            <div className="row justify-content-center">
+                {populateCards()}
+            </div>
             {spinner ? <Spinner /> : null}
         </div>
     )

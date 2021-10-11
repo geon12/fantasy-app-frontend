@@ -55,23 +55,25 @@ function LeagueCard({league,commissioner,updateLeagues,getUserData}) {
     }
 
     return (
+        <div className="card shadow m-2 p-2">
         <div>
             { showEdit ?
                 <LeagueEditForm league={league} setShowEdit={setShowEdit} handleSubmit={handleSubmit}/> :
                 <>
-                    <h2>{league.name}</h2>
-                    <h3>Max number of Teams: {league.team_num}</h3>
+                    <h2 className="display-font">{league.name}</h2>
+                    <h3>Max # of Teams: {league.team_num}</h3>
                 </> 
             }   
             {commissioner ? 
                 <>
-                <h3>Commisssioner</h3>
-                <button onClick={handleEdit}>{showEdit ? "Close" : "Edit"}</button>
-                <button onClick={deleteLeague}>Delete League</button>
+                <h3 className="commissioner">Commissioner</h3>
+                <button className="btn btn-success mx-1" onClick={handleEdit}>{showEdit ? "Close" : "Edit"}</button>
+                <button className="btn btn-success mx-1" onClick={deleteLeague}>Delete League</button>
                 </>
                 :
                 null
             }
+        </div>
         </div>
     )
 }
