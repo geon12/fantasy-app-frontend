@@ -8,7 +8,7 @@ function TeamCard({team,league,setUser, user}) {
         setShowEdit(prevState => !prevState)
     }
     return (
-        <div className="card m-2 border-dark p-2 text-center mx-5">
+        <div className="col-12 card shadow m-2 border-dark p-3 text-center mx-5 gradient-card">
             <Link className="team-card" to={`/fantasy_teams/${team.id}`}>
                 <div>
                     <h1>{team.team_name}</h1>
@@ -18,7 +18,7 @@ function TeamCard({team,league,setUser, user}) {
             </Link>
             {showEdit ? <TeamForm team={team} setShowEdit={setShowEdit} setUser={setUser} user={user}/> : null}
             <div>
-                <button onClick={handleClick}>{showEdit ? "Close" : "Edit"}</button>
+                <button className="btn btn-success rounded-pill" onClick={handleClick}>{showEdit ? "Close" : "Edit"}</button>
             </div>
         </div>
     )

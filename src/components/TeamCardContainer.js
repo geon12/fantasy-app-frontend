@@ -1,5 +1,5 @@
 import TeamCard from "./TeamCard"
-
+import "./styles/Profile.css"
 function TeamCardContainer({user,setUser}) {
 
     function findleague(team) {
@@ -13,8 +13,8 @@ function TeamCardContainer({user,setUser}) {
     }
     return (
         <div>
-            <h1>Your Teams</h1>
-            <div className="d-flex justify-content-center">
+            <h1 className="display-4 yourteam-title">Your Teams</h1>
+            <div className="d-flex row justify-content-center">
                 {populateTeamCards()}
             </div>
         </div>

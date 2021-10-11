@@ -1,8 +1,20 @@
 .team-card {
     text-decoration: none;
-    color:black;
+    color:white;
 }
 
 .card {
     width:50%;
+}
+
+.gradient-card {
+    background-image: linear-gradient(to right, lightgreen , darkgreen);
+}
+
+a:hover {
+    color: lightgreen;
+}
+
+.team-button {
+    background-color: white;
 }

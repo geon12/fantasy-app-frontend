@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./styles/TeamCard.css"
 
 function TeamForm({team,setShowEdit,setUser,user}) {
     const [name,setName] = useState(team.team_name)
@@ -39,9 +40,9 @@ function TeamForm({team,setShowEdit,setUser,user}) {
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={name} onChange={handleChange}/>
-            <button>Save</button>
+        <form className="form-group" onSubmit={handleSubmit}>
+            <input className="form-control-lg m-2" type="text" value={name} onChange={handleChange}/>
+            <button className="btn btn-outline-success team-button">Save</button>
         </form>
     )
 }
