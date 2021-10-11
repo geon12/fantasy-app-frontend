@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import PlayerCard from "./PlayerCard"
 import SearchBar from "./SearchBar"
+import Spinner from "./Spinner"
 import "./styles/AddPlayer.css"
 
 function AddPlayer({team,setTeam,setShowAdd,position}) {
@@ -63,21 +64,33 @@ function AddPlayer({team,setTeam,setShowAdd,position}) {
             <h1>{`Add a ${position} player to your roster`}</h1>
             {freeAgents ?
                 <> 
-                <button onClick={handleCloseClick}>Close</button>
+                <button  className="btn btn-lg btn-success mx-1 rounded-pill" onClick={handleCloseClick}>Close</button>
                 <SearchBar handleSearch={handleSearch} resource={"Free Agents"}/>
-                {filteredAgents.map((agent) => 
-                    <PlayerCard 
-                        player={agent} 
-                        key={agent.id} 
-                        handleClose={handleCloseClick} 
-                        teamId={team.id}
-                        updateRoster={updateRoster}
-                        position={position}
-                    />) 
-                }
+                <table className="table my-2">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Team</th>
+                        <th>Position</th>
+                        <th>FPPG</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        {filteredAgents.map((agent) => 
+                            <PlayerCard 
+                                player={agent} 
+                                key={agent.id} 
+                                handleClose={handleCloseClick} 
+                                teamId={team.id}
+                                updateRoster={updateRoster}
+                                position={position}
+                            />) 
+                        }
+                    </tbody>
+                </table>
                 </> 
                 : 
-                <div>Loading</div>}
+                <Spinner />}
         </div>
     )
 }

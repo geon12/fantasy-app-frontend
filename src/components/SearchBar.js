@@ -20,7 +20,7 @@ function SearchBar({handleSearch, resource}) {
     return (
         <form>
             <label htmlFor={id}>
-                <span>Search for {resource}</span>
+                <span className="h3 mx-2">Search for {resource}:</span>
             </label>
             <input
                 type="text"
@@ -29,6 +29,7 @@ function SearchBar({handleSearch, resource}) {
                 name="title"
                 value={search}
                 onChange={handleChange}
+                className="form-control-lg m-2"
             />
             
         </form>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import RosterCardContainer from "./RosterCardContainer";
+import Spinner from "./Spinner";
 
 function Roster() {
 
@@ -87,11 +88,11 @@ function Roster() {
         <div className="text-center">
             {team && team.league ? 
             <div>
-                <h1>{team.team_name}</h1>
-                <h2>league: {team.league.name}</h2>
+                <h1 className="display-2 display-font">{team.team_name}</h1>
+                <h2 className="display-font">League: {team.league.name}</h2>
                 <RosterCardContainer team={team} setTeam={setTeam}/>
             </div> :
-            <div>Page is Loading</div>
+            <Spinner />
             }
         </div>
 

@@ -18,3 +18,12 @@ a:hover {
 .team-button {
     background-color: white;
 }
+
+.display-font {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.add-card:hover {
+    color: darkgreen;
+    background-color:white;
+}

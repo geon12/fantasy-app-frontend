@@ -79,7 +79,7 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
     }
 
     return (
-        <div className="card border-dark text-center p-2 m-2">
+        <div className="card col-12 shadow gradient-card team-card border-dark text-center p-2 m-2">
             {
                 teamPlayer ?
                 <div>
@@ -87,16 +87,16 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
                     <h3>{teamPlayer.player.nba_team}</h3>
                     <h4>{teamPlayer.player.position}</h4>
                     <h4>fppg: {teamPlayer.player.fppg}</h4>
-                    <button onClick={dropPlayer}>Drop Player</button>
-                    { teamPlayer.bench || !benchable ? null : <button onClick={handleBenchClick}>Bench</button> }
-                    { ((canStart[0] || canStart[1]) && teamPlayer.bench) ? <button onClick={handleStart}>Start</button> : null}
+                    <button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={dropPlayer}>Drop Player</button>
+                    { teamPlayer.bench || !benchable ? null : <button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={handleBenchClick}>Bench</button> }
+                    { ((canStart[0] || canStart[1]) && teamPlayer.bench) ? <button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={handleStart}>Start</button> : null}
                 </div>
                 :
                 <>
                     {
                     showAdd ? 
                     <AddPlayer team={team} setTeam={setTeam} showAdd={showAdd} setShowAdd={setShowAdd} position={position}/>:
-                    <div className="display-5 p-5 hover-shadow" onClick={handleClick}>{`Add a ${position} player to your roster`}</div>
+                    <div className="display-5 p-5 hover-shadow add-card" onClick={handleClick}>{`Add a ${position} player to your roster`}</div>
                     
                     }
                 </>

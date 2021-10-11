@@ -12,7 +12,7 @@ function TeamCard({team,league,setUser, user}) {
             <Link className="team-card" to={`/fantasy_teams/${team.id}`}>
                 <div>
                     <h1>{team.team_name}</h1>
-                    <h2>league: {league.name}</h2>
+                    <h2>League: {league.name}</h2>
                     
                 </div>
             </Link>

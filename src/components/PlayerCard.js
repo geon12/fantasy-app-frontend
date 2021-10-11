@@ -23,13 +23,20 @@ function PlayerCard({player,handleClose,teamId,updateRoster,position}) {
         handleClose()
     }
     return (
-        <div>
-            <h2>{player.name}</h2>
-            <h3>{player.nba_team}</h3>
-            <h3>{player.position}</h3>
-            <h3>{player.fppg}</h3>
-            <button onClick={addToRoster}>Add to Roster</button>
-        </div>
+        // <div>
+        //     <h2>{player.name}</h2>
+        //     <h3>{player.nba_team}</h3>
+        //     <h3>{player.position}</h3>
+        //     <h3>{player.fppg}</h3>
+        //     <button onClick={addToRoster}>Add to Roster</button>
+        // </div>
+        <tr>
+            <td>{player.name}</td>
+            <td>{player.nba_team}</td>
+            <td>{player.position}</td>
+            <td>{player.fppg}</td>
+            <td><button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={addToRoster}>Add to Roster</button></td>
+        </tr>
     )
 }
 
