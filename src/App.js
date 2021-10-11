@@ -80,10 +80,10 @@ function App() {
           {user ? <Redirect to="/profile" /> : <SignUp setUser={setUser}/>}
         </Route>
         <Route exact path="/leagues">
-          {user ? <Leagues user={user} setUser={setUser} getUserData={getUserData}/> : <div>Loading</div>}
+          {user ? <Leagues user={user} setUser={setUser} getUserData={getUserData}/> : <Spinner />}
         </Route>
         <Route exact path="/join_league">
-          {user ? <JoinLeague user={user} setUser={setUser} getUserData={getUserData}/> : <div>Loading</div>}
+          {user ? <JoinLeague user={user} setUser={setUser} getUserData={getUserData}/> : <Spinner />}
         </Route>
         <Route exact path="/fantasy_teams/:teamId">
             {user ? <Roster /> : null}
