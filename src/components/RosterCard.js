@@ -1,8 +1,11 @@
 import AddPlayer from "./AddPlayer"
 import {useState} from "react"
+import StatsTable from "./StatsTable"
 
 function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
     const [showAdd,setShowAdd] = useState(false)
+    const [stats,setStats] = useState(null)
+    const [date, setDate] = useState("2021-01-01",)
 
     const token = localStorage.getItem("jwt")
     
@@ -78,6 +81,31 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
         }
     }
 
+    function scrapeData(event) {
+        event.preventDefault()
+        
+        if (token) {
+            fetch(`${process.env.REACT_APP_API_URL}/scrape`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({name:teamPlayer.player.name, date:date}),
+                })
+                .then((resp) => resp.json())
+                .then((data) => {
+                    
+                    setStats(data)
+                })
+        }
+    }
+
+    function handleChange(event) {
+        setDate(event.target.value)
+    }
+
     return (
         <div className="card col-12 shadow gradient-card team-card border-dark text-center p-2 m-2">
             {
@@ -90,6 +118,20 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
                     <button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={dropPlayer}>Drop Player</button>
                     { teamPlayer.bench || !benchable ? null : <button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={handleBenchClick}>Bench</button> }
                     { ((canStart[0] || canStart[1]) && teamPlayer.bench) ? <button className="btn btn-outline-success team-button mx-1 rounded-pill" onClick={handleStart}>Start</button> : null}
+                    <form onSubmit={scrapeData}>
+                        <input 
+                        type="date" 
+                        name="date" 
+                        min="1999-01-01" 
+                        max="2030-01-01" 
+                        required pattern="\d{4}-\d{2}-\d{2}" 
+                        value={date}
+                        onChange={handleChange}
+                        className="form-control-lg m-2"
+                        />
+                        <button className="btn btn-outline-success team-button mx-1 rounded-pill" type="submit">Get Stats</button>
+                    </form>
+                    {stats ? <StatsTable stats={stats} /> : null}
                 </div>
                 :
                 <>
