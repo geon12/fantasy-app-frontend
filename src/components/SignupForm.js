@@ -44,7 +44,8 @@ function SignupForm({setUser}) {
                 setSpinner(false)
                 localStorage.setItem("jwt", data.jwt);
                 setUser(data.user)
-            })
+            }).catch(console.log)
+
         setSpinner(true)
     }
     return (

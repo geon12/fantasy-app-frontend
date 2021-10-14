@@ -18,6 +18,7 @@ function PlayerCard({player,handleClose,teamId,updateRoster,position}) {
                 .then((data) => {
                     updateRoster(data)
                 })
+                .catch(console.log)
         }
     
         handleClose()

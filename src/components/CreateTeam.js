@@ -41,7 +41,7 @@ function CreateTeam({user,setUser,league,handleClick}) {
                 .then(resp => resp.json())
                 .then( (resp) => {
                     updateUser(resp)
-                    //setShowCreate(false)
+                    
                 }).then(
                     
                     history.push("/profile")

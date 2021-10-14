@@ -57,7 +57,6 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
             body: JSON.stringify(data) 
         }).then (resp => resp.json())
             .then((resp) => {
-                //console.log(updatePlayers(resp))
                 setTeam(updatePlayers(resp))
             }).catch(console.log)
 
@@ -99,6 +98,7 @@ function RosterCard({teamPlayer,position,team,setTeam,benchable,canStart}) {
                     
                     setStats(data)
                 })
+                .catch(console.log)
         }
     }
 

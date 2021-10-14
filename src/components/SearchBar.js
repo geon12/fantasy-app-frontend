@@ -8,11 +8,6 @@ function SearchBar({handleSearch, resource}) {
         setSearch(event.target.value)
         handleSearch(event.target.value)
     }
-    // function handleSubmit(event) {
-    //     event.preventDefault()
-    //     handleSearch(search)
-    //     setSearch("")
-    // }
 
     
     const placeholder = `Search`
